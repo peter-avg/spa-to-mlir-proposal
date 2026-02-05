@@ -1,0 +1,18 @@
+\subsection{Propagation Strategy}
+
+SPA works by propagating sparsity information in multiple directions during 
+computation of tensor operations. The main directions are:
+
+\begin{enumerate}
+    \item Forward propagation: where information contained in the input tensors
+        $A$ and $B$, will constrain the output tensor $C = A \times B$.
+    \item Backward propagation: where the information contained in the output
+        tensor $C$ will constrain the input tensors $A$ and $B$.
+    \item Lateral propagation: where the information contained in either input 
+        $A$ and $B$, will contrain the other.
+\end{enumerate}
+
+\subsection{Sparsity Vectors}
+
+SPA introduces several abstractions for representing sparsity information over 
+tensors.

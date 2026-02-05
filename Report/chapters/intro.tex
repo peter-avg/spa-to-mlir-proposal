@@ -1,0 +1,29 @@
+Modern Machine Learning (ML) Compilers and Stencil Domain Specific Languages (DSLs) are heavily
+dependant on sparse linear algebra for efficient execution of computations across computational 
+graphs and stencil grids. Recent work by Henrique et al. \cite{spa2026} introduces the 
+Sparsity Propagation Analysis (SPA), which is a static analysis technique for computational graphs
+that identifies sparsity in multidimensional tensors. SPA infers which slices of the input
+and output tensors are guaranteed to be zero or non-zero, when executing tensor operations.
+This analysis can significantly reduce memory footprint by using sparse representations, and 
+can also reduce computational overhead by ignoring redundant computations.
+
+% This is done by propagating sparsity information forward, where information 
+% contained in the input tensor will constrain the output tensor, backward, where 
+% the information contained in the output tensor will constrain the input tensors 
+% associated with the operation, and laterally, where the information contained 
+% in either input, will contrain each other. This approach can significantly reduce 
+% memory footprint for sparse tensors, due to the usage of customized sparse formats,
+% and can also reduce computational overhead by skipping redudant computations.
+
+Although this approach is very promising, it is currently limited to only the 
+Tensor Algebra Compiler (TACO) \cite{taco2017}. This proposes a 
+barrier to adoption of SPA for other compilers and DSLs, as it requires significant
+engineering effort to implement the analysis as a pass for each of them. Additionally, 
+SPA is currently only implemented for a small subset of tensor operations, which
+limits its applicability to a wider range of applications.
+
+We propose to address these limitations by developing a more general and 
+extensible framework for SPA, using MLIR \cite{mlir2020} as the underlying 
+infrastructure.
+
+

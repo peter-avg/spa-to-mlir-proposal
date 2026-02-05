@@ -1,0 +1,95 @@
+\documentclass[journal]{IEEEtran}
+\usepackage[greek,english]{babel}
+\usepackage{csquotes}
+\usepackage{alphabeta}
+\usepackage{listings}
+\usepackage{titling}
+\usepackage{xcolor}
+\usepackage{pdfpages}
+\usepackage[backend=biber]{biblatex}
+\addbibresource{../Bibliography/bibliography.bib}
+\usepackage{xr}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{blindtext}
+\usepackage{geometry}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{steinmetz}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tikz}
+\usepackage{fdsymbol}
+\geometry{
+    a4paper,
+    total={170mm,257mm},
+    left=20mm,
+    top=20mm,
+}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    % basicstyle=\ttfamily\footnotesize,
+    basicstyle=\ttfamily\tiny,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+
+\lstset{style=mystyle}
+
+\title{Porting the Sparsity Propagation Algorithm (SPA) to MLIR}
+\author{
+\IEEEauthorblockN{Petros Avgerinos}
+\IEEEauthorblockA{\\
+\small Imperial College London\\
+\small London, United Kingdom\\
+\small pa825@ic.ac.uk
+}
+}
+
+\date{}
+
+
+\begin{document}
+
+\maketitle
+
+\input{chapters/abstract.tex}
+
+\section*{Motivation}
+\input{chapters/intro.tex}
+
+\section*{Background}
+\input{chapters/background.tex}
+
+\printbibliography
+
+\listoftables
+\listoffigures
+\appendix
+
+
+\end{document}
