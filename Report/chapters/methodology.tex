@@ -1,0 +1,9 @@
+This project will reformulate the Sparsity Propagation Analysis (SPA) as a static 
+analysis within the MLIR framework, targeting the linalg dialect. The analysis 
+will represent the abstract domain of sparsity vectors, transfer functions and 
+propagation strategies and rules as an MLIR pass. The results of the analysis 
+will be exposed back to the IR as metadata that can be used for further 
+transformations, optimizations and lowering passes. This approach will allow for 
+a more modular and extensible implementation of SPA, that can be used across 
+different applications, without being constrained to computational graphs or the 
+TACO compiler. 
