@@ -1,3 +1,6 @@
+SPA introduces several abstractions for representing sparsity information over 
+tensors.
+
 \subsection{Propagation Strategy}
 
 SPA works by propagating sparsity information in multiple directions during 
@@ -14,5 +17,26 @@ computation of tensor operations. The main directions are:
 
 \subsection{Sparsity Vectors}
 
-SPA introduces several abstractions for representing sparsity information over 
-tensors.
+Sparsity vectors are data structures that SPA uses to represent the sparsity 
+information of a tensor. Sparsity vectors are bitmaps per dimension of a tensor, 
+where a single bit is set to 0 if the corresponding slice is populated by zero 
+values, and 1 otherwise.
+
+\subsection{Semirings}
+
+SPA is formulated over the algebraic structure of semirings, and so it supports
+operations that have absorbing and identity elements, such as multiplication 
+and addition. Currently, SPA only supports the semirings of addition and 
+multiplication, but it can be extended to support more semirings.
+
+\subsection{Transfer Functions}
+
+Transfer functions are the vehicles that drive sparsity information of tensors 
+across operations via the sparsity vectors. These functions specify how the 
+sparsity vectors of the input and output tensors constrain each other, based 
+on the propagation strategy employed, and capture how sparse slices flow through
+the computational graph.
+
+
+
+
