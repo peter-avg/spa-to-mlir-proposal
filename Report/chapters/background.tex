@@ -37,6 +37,12 @@ sparsity vectors of the input and output tensors constrain each other, based
 on the propagation strategy employed, and capture how sparse slices flow through
 the computational graph.
 
+\subsection{Propagation Order}
+
+Due to data dependencies in a computational graph, when the order of propagations 
+is applied in the specific sequence of forward, lateral, and backward, the analysis 
+converges to a fixed point, provided that the graph is acyclic.
+
 
 
 

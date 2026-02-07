@@ -1,9 +1,25 @@
 This project will reformulate the Sparsity Propagation Analysis (SPA) as a static 
-analysis within the MLIR framework, targeting the linalg dialect. The analysis 
+analysis within the MLIR framework, targeting the \emph{linalg}
+\footnote{\url{https://mlir.llvm.org/docs/Dialects/Linalg/}} dialect. The analysis 
 will represent the abstract domain of sparsity vectors, transfer functions and 
-propagation strategies and rules as an MLIR pass. The results of the analysis 
+propagation strategies as an MLIR pass. Our implementation aims to extend
+supported operations beyond multiplication and addition, with operations such as
+clamping, convolutions, or matrix inversions.
+
+For every tensor value $T$ in the IR, the analysis will keep a sparsity vector $a(T)$,
+which will consist of a single bitmap per dimension, representing the current sparsity
+information for that tensor. We will then sequentially apply the appropriate transfer
+functions on each \emph{linalg} operation, as we move across the IR, to propagate
+the sparsity information.
+
+The direction of movement in the IR will be determined by the sequential order 
+of propagation strategies, until convergence. The results of the analysis 
 will be exposed back to the IR as metadata that can be used for further 
-transformations, optimizations and lowering passes. This approach will allow for 
-a more modular and extensible implementation of SPA, that can be used across 
-different applications, without being constrained to computational graphs or the 
-TACO compiler. 
+transformations, optimizations and lowering passes. The operations after the 
+analysis can be rewritten to take advantage of the sparsity information, 
+for example by shrinking the iteration space of loops or extracting and 
+reinserting slices.
+
+This approach will allow for a more modular and extensible implementation of SPA,
+that can be used across different applications, without being constrained to
+computational graphs or the TACO compiler. 
