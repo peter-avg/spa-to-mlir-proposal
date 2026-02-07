@@ -1,0 +1,14 @@
+This proposal has presented a comprehensive plan for the reformulation of 
+the Sparsity Propagation Analysis (SPA), using the MLIR compiler
+infrastructure.
+The proposed approach aims to leverage MLIR's 
+structured intermediate representations, along with its pass and transformation frameworks,
+to provide an extensible, efficient and modular framework for sparsity propagation
+analysis. With the adoption of MLIR, SPA would be disjointed from the TACO compiler, 
+and it would be reusable across a wider range of applications and domains, with 
+minimal engineering effort. Although the initial implementation targets the \emph{linalg}
+dialect, the design naturally generalizes across other dialects as well, enabling
+future extensions.
+This work aims to demonstrate how SPA can be elevated from a compiler specific 
+optimization, to a generalized, reusable IR-level optimization within the MLIR 
+compiler ecosystem.

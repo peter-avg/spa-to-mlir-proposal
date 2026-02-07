@@ -4,10 +4,11 @@ analysis within the MLIR framework, targeting the \emph{linalg}
 will represent the abstract domain of sparsity vectors, transfer functions and 
 propagation strategies as an MLIR pass. Our implementation aims to extend
 supported operations beyond multiplication and addition, with operations such as
-clamping, convolutions, or matrix inversions.
+clamping, and convolutions.
 
-For every tensor value $T$ in the IR, the analysis will keep a sparsity vector $a(T)$,
-which will consist of a single bitmap per dimension, representing the current sparsity
+For every tensor value $T$ in the IR (Intermediate Representation), the analysis
+will keep a sparsity vector $a(T)$, which will consist of a single bitmap per dimension,
+representing the current sparsity
 information for that tensor. We will then sequentially apply the appropriate transfer
 functions on each \emph{linalg} operation, as we move across the IR, to propagate
 the sparsity information.
@@ -17,9 +18,39 @@ of propagation strategies, until convergence. The results of the analysis
 will be exposed back to the IR as metadata that can be used for further 
 transformations, optimizations and lowering passes. The operations after the 
 analysis can be rewritten to take advantage of the sparsity information, 
-for example by shrinking the iteration space of loops or extracting and 
-reinserting slices.
+for example by shrinking the iteration space of loops
+(after lowering in the \emph{scf} dialect), or extracting and reinserting slices
+(in the \emph{tensor/linalg} dialects).
 
 This approach will allow for a more modular and extensible implementation of SPA,
 that can be used across different applications, without being constrained to
 computational graphs or the TACO compiler. 
+
+\begin{figure}[b]
+\centering
+
+\begin{lstlisting}
+%A = tensor<4x3xf32>
+%B = tensor<3x5xf32>
+
+%C = linalg.matmul(%A, %B)
+     : (tensor<4x3xf32>, tensor<3x5xf32>)
+       -> tensor<4x5xf32>
+\end{lstlisting}
+
+\vspace{0.5em}
+
+\begin{lstlisting}
+%A = tensor<4x3xf32> {spa.sv = [[1, 0, 1, 1], [1, 1, 1]]}
+%B = tensor<3x5xf32> {spa.sv = [[1, 1, 1], [1, 1, 1, 0, 1]]}
+
+%C = linalg.matmul(%A, %B)
+     : (tensor<4x3xf32>, tensor<3x5xf32>) -> tensor<4x5xf32>
+     {spa.sv = [[1, 0, 1, 1], [1, 1, 1, 0, 1]]}
+\end{lstlisting}
+
+\caption{Example of sparsity propagation analysis through a \emph{linalg.matmul} operation in MLIR}
+\label{fig:spa-code-example}
+\end{figure}
+
+

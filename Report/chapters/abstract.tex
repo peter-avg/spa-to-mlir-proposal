@@ -1,3 +1,19 @@
 \begin{abstract}
-    this is an abstract
+    Sparsity in tensors and tensor slices is common in many application domains,
+    including machine learning workloads and stencil-based solvers for partial
+    differential equations. Exploiting this sparsity is critical for reducing
+    memory footprint and avoiding redundant computation in compiler-generated code.
+    Prior work has explored a range of sparse representations and techniques
+    for propagating known sparsity information across computational graphs.
+    Recent work by the Compilers Lab at UFMG introduced Sparsity Propagation Analysis
+    (SPA), a static analysis that propagates sparsity information in a multidirectional
+    manner across computational graphs, enabling significant performance and memory improvements.
+    However, the existing implementation of SPA is tightly coupled to the Tensor
+    Algebra Compiler (TACO), making its adoption in other compilers and domain-specific
+    languages costly in terms of engineering effort. This proposal addresses this
+    limitation by reformulating SPA within the MLIR compiler infrastructure.
+    By leveraging MLIR’s pass and transformation frameworks, the proposed approach
+    aims to provide an extensible, efficient, and portable implementation of sparsity
+    propagation analysis that can be reused across different dialects and compilation
+    pipelines within the MLIR ecosystem.
 \end{abstract}

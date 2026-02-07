@@ -24,6 +24,7 @@
 \usepackage[noend]{algpseudocode}
 \usepackage[shortlabels]{enumitem}
 \usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning}
 \usepackage{fdsymbol}
 \geometry{
     a4paper,
@@ -57,15 +58,32 @@
     tabsize=2
 }
 
+\lstdefinelanguage{MLIR}{
+  morekeywords={linalg.matmul,tensor.extract_slice,tensor.insert_slice},
+  sensitive=true,
+  morecomment=[l]{//},
+  morestring=[b]"
+}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  frame=single,
+  columns=fullflexible,
+  keepspaces=true,
+  breaklines=true,
+  language=MLIR
+}
+
 
 \lstset{style=mystyle}
 
-\title{Porting the Sparsity Propagation Algorithm (SPA) to MLIR}
+\title{Porting the Sparsity Propagation Analysis to MLIR}
 \author{
 \IEEEauthorblockN{Petros Avgerinos}
 \IEEEauthorblockA{\\
 \small Imperial College London\\
-\small pa825@ic.ac.uk
+\small London, United Kingdom\\
+\small peter.avgerinos25@imperial.ac.uk
 }
 }
 
@@ -89,6 +107,9 @@
 
 \section*{Evaluation}
 \input{chapters/evaluation.tex}
+
+\section*{Conclusion}
+\input{chapters/conclusion.tex}
 
 \printbibliography
 
