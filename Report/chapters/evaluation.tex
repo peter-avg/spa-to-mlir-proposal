@@ -1,0 +1,19 @@
+We will evaluate our MLIR \emph{linalg} SPA implementation on a suite of 
+benchmarks around three separate axes: 
+
+\begin{enumerate}
+    \item Analysis Overhead: We will measure the analysis pass runtime
+        until convergence across different tensor sizes and different
+        computational graphs. We will then compare the analysis runtime with the
+        execution time of the computational graph.
+    \item Sparsity Propagation Effect: We will measure the percentage of sparsity 
+        inferred by our analysis pass for each different sparsity strategy: forward,
+        backward, and lateral.
+    \item Transformation Impact: We will measure the execution time and memory footprint
+        of the transformed \emph{linalg} IR with inferred sparsity, against the original
+        execution time of the computational graph.
+\end{enumerate}
+
+Benchmarks will include computational graphs consisting of \emph{linalg.matmul}
+and \emph{linalg.generic} operations, with varying tensor sizes and controlled 
+input slice sparsity across specific tensors.
