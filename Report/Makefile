@@ -1,6 +1,6 @@
 SHELL := /bin/zsh
 
-.PHONY: all clean kill list
+.PHONY: all clean kill list pdf
 
 LATEXMK_MATCH := latexmk[[:space:]].*-pvc
 

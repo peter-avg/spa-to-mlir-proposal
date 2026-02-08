@@ -18,8 +18,8 @@ computation of tensor operations. The main directions are:
 
 Sparsity vectors are data structures that SPA uses to represent the sparsity 
 information of a tensor. Sparsity vectors are bitmaps per dimension of a tensor, 
-where a single bit is set to 0 if the corresponding slice is populated by zero 
-values, and 1 otherwise.
+where a single bit is set to 0 if the corresponding slice is irrelevant to
+the final result of the computation, and 1 otherwise.
 
 \subsection{Semirings}
 
