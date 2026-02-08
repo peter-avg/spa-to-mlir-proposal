@@ -31,7 +31,7 @@ clean:
 	files=( \
 		*.aux *.log *.out *.toc *.bbl *.blg *.dvi *.nav \
 		*.snm *.vrb *.lof *.lot *.idx *.ilg *.ind *.fls *.fdb_latexmk \
-		*.synctex.gz text.bcf-SAVE-ERROR text.bcf text.run.xml *.pdf \
+		*.synctex.gz text.bcf-SAVE-ERROR text.bcf text.run.xml \
 		*.bbl-SAVE-ERROR \
 	); \
 	if (( $${#files[@]} == 0 )); then \

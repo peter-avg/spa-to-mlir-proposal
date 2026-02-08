@@ -25,8 +25,8 @@ the final result of the computation, and 1 otherwise.
 
 SPA is formulated over the algebraic structure of semirings, and so it supports
 operations that have absorbing and identity elements, such as multiplication 
-and addition. Currently, SPA only supports the semirings of addition and 
-multiplication, but it can be extended to support more semirings.
+and addition. Currently, only the aforementioned semirings are supported in SPA 
+but it is possible to extend to more.
 
 \subsection{Transfer Functions}
 
@@ -41,7 +41,3 @@ the computational graph.
 Due to data dependencies in a computational graph, when the order of propagations 
 is applied in the specific sequence of forward, lateral, and backward, the analysis 
 converges to a fixed point, provided that the graph is acyclic.
-
-
-
-
